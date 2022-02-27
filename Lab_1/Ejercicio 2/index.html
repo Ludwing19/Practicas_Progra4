@@ -1,0 +1,199 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" >
+
+    <title>Laboratorio 1</title>
+</head>
+
+<body>
+    <div id = "se_pa1" >
+          <h3>Primera Forma</h3>
+    </div>
+  
+            <div class="container">
+                <div id = "root" > 
+
+                    <div class="row g-2">
+
+                        <div class="col-6">
+                            <div class="p-3 border bg-light">
+                                <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="input" v-model = "text" placeholder="Carnet" >
+                                <label for="input">Carnet</label>
+                             </div>
+                                <p>Carnet : {{text}}</p>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="p-3 border bg-light">
+                                <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="input2" v-model = "text2" placeholder="Nombre" >
+                                <label for="input2">Nombre</label>
+                             </div>
+                                <p>Nombre: {{text2}}</p>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="p-3 border bg-light">
+                                <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="input3" v-model = "text3" placeholder="Facultad" >
+                                <label for="input3">Facultad</label>
+                            </div>
+                                <p>Facultad: {{text3}}</p>
+                        </div>
+                    </div>
+
+                        <div class="col-6">
+                            <div class="p-3 border bg-light">
+                                <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="input4" v-model = "text4" placeholder="Carrera" >
+                                <label for="input4">Carrera</label>
+                            </div>
+                                <p>Carrera: {{text4}}</p>
+                            </div>
+                        </div>
+
+                         <div class="p-3 border bg-light">
+                            <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="input5" v-model = "text5" placeholder="Plan 000" >
+                            <label for="input5">Plan</label>
+                        </div>
+                        <p>Plan: {{text5}}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+<br>          
+
+<div id = "se_pa2">
+<h3>Segunda Forma</h3>
+</div>
+ 
+
+                    <!-- Aqui representamos los datos de los estudiantes listados -->
+    <div class="container-sm" >
+        <div id="ListarAlum">
+            <ol>
+                <li v-for="alumno in alumnos">
+                    {{ alumno.text }}
+                </li>
+            </ol>
+        </div>
+    </div>
+
+      <br>
+      <br>
+
+      <div id = "student">
+        <p v-html = "text"></p>
+        <p v-html = "text2"></p>
+      </div>
+      <br>
+      <br>
+
+      <div id = "ListMascot">
+
+        <h3>{{ ver }}</h3>
+
+            <ul>
+                <li v-for = "NameMascots in NameMascot" >{{NameMascots }} </li>
+            </ul>
+
+      </div> 
+
+
+        
+
+    <!-- Incluir Archivos js de Boostrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    
+    <!-- Incluir Archivos js de VueJs -->
+     <!--script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script-->
+
+    <script>
+
+        let data = {
+            text:" ",
+            text2:" ",
+             text3:" ",
+              text4:" ",
+               text5:" "
+        }
+        //Instancia
+        new Vue({
+            el: '#root',
+            data:data
+        })
+        
+    //Aqui listamos los datos que seran mostrados
+        var ListarAlum = new Vue({
+            el: '#ListarAlum',
+            data: {
+                alumnos: [
+                    { text: 'Carnet:  Smis010518' },
+                    { text: 'Nombre: Ludwing Rolando' },
+                    { text: 'Facultad: Ciencias y Tecnologia'},
+                     { text: 'Carrera: Ingenieria en Sistemas'},
+                      { text: 'Plan: 003'},
+                ]
+            }
+        })
+
+       //Separadores
+        let separador = {
+            p1:"<h2>Primera Parte</h2>",
+        }
+
+        new Vue({
+            el:'#se_pa1',
+            data:separador,
+        })
+
+                let separador = {
+            p2: "<h2>Segunda Parte</h2>"
+        }
+
+        new Vue({
+            el:'#se_pa2',
+            data:separador,
+        })
+
+
+//-------------------- Nuestros Nombres -----------------------------------------
+
+        let nombre = { 
+            text: "<h2><i>Ludwing Rolando</i></h2>",
+                text2: "<h2><i>Kenia Leticia</i></h2>"
+            }
+
+        new Vue({
+            el:'#student',
+            data: nombre,
+        })
+
+        //Listado de mascotas -----
+        var Mascot = new Vue ({
+            el:'#ListMascot',
+            data: {
+                ver: "Ver Listas",
+                NameMascot:['Cliford, 2 años','Kiara, 3 años', 'Killer, 4 meses', 'Misifu, 5 años'],
+            },
+        })
+        
+    </script>
+<br>
+<br>
+</body>
+
+</html>
